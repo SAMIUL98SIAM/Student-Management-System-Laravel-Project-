@@ -28,7 +28,7 @@ class LoginController extends Controller
                 $req->session()->put('email', $req->email);
                 $req->session()->put('type', $req->type);
                 $req->session()->put('id', $user->id);
-                return redirect('/Student');
+                return redirect('/studentHome');
             }
             elseif($user["type"] =='faculty'){
                 $req->session()->put('email', $req->email);

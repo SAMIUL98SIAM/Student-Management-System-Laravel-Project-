@@ -5,6 +5,7 @@ use App\Events\Message;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\FacultyController;
@@ -31,6 +32,7 @@ Route::get('/home',[StudentController::class,'index']);
 
 Route::get('/login', [LoginController::class,'index']);
 Route::post('/login', [LoginController::class,'login']);
+Route::get('/logout', [LogoutController::class,'index']);
 
 Route::get('/register', [RegistrationController::class,'index']);
 Route::post('/register', [RegistrationController::class,'signup']);
@@ -38,9 +40,14 @@ Route::post('/register', [RegistrationController::class,'signup']);
 
 Route::group(['middleware'=>['faculty']] , function(){
     Route::get('/facultyHome', [FacultyController::class,'index']);
-
+    Route::get('/faculty/postStudent', [FacultyController::class,'poststudent']);
 });
 
+
+Route::group(['middleware'=>['student']] , function(){
+    Route::get('/studentHome', [StudentController::class,'index']);
+    
+});
 
 
 

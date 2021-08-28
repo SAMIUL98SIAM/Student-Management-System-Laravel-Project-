@@ -10,4 +10,8 @@ class FacultyController extends Controller
     {
         return view('teacher.dashboard');
     }
+    public function poststudent()
+    {
+        return view('teacher.poststudent');
+    }
 }
