@@ -23,7 +23,7 @@
     <div class="card-body">
       <p class="login-box-msg">Register a new membership</p>
 
-      <form method="post">
+      <form method="post" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
         <div class="input-group mb-3">
           <input type="text" name="username" value="{{old('username')}}" class="form-control" placeholder="Username">
@@ -57,6 +57,14 @@
             </div>
           </div>
         </div>
+        <div class="input-group  mb-3">
+          <input type="file" name="image" value="{{old('image')}}" class="form-control">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-image"></span>
+            </div>
+          </div>
+        </div>
         <div class="input-group mb-3">
             <select name="type" class="form-control">
                 <option selected="">type</option>
@@ -86,7 +94,7 @@
           <!-- /.col -->
         </div>
         @foreach ($errors->all() as $error)
-            <div class="btn btn-danger">{{$error}}</div> <br>
+            <div class="text-danger">{{$error}}</div> <br>
         @endforeach 
       </form>
 

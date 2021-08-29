@@ -26,7 +26,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../index3.html" class="nav-link">Home</a>
+        <a href="/facultyHome" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -161,7 +161,7 @@
     <!-- Brand Logo -->
     <a href="../../index3.html" class="brand-link">
       <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Student List</span>
     </a>
 
     <!-- Sidebar -->
@@ -193,27 +193,19 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-
-            
-          <li class="nav-header">LABELS</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle text-danger"></i>
-              <p class="text">Important</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle text-warning"></i>
-              <p>Warning</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle text-info"></i>
-              <p>Informational</p>
-            </a>
-          </li>
+               <li class="nav-header">LABELS</li>
+               <li class="nav-item">
+                 <a href="#" class="nav-link">
+                   <i class="nav-icon far fa-circle text-danger"></i>
+                   <p class="text">Important</p>
+                 </a>
+               </li>
+               <li class="nav-item">
+                 <a href="/logout" class="nav-link">
+                   <i class="nav-icon far fa-circle text-warning"></i>
+                   <p>Logout</p>
+                 </a>
+               </li>   
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -232,13 +224,98 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="/facultyHome">Home</a></li>
               <li class="breadcrumb-item active">DataTables</li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
+    <div class="card-body">
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
+        Add Student's
+      </button>
+    </div>
+    <div class="modal fade" id="modal-success">
+      <div class="modal-dialog">
+        <div class="modal-content bg-success">
+          <div class="modal-header">
+            <h4 class="modal-title">Student Registration Form</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form method="post" enctype="multipart/form-data">
+              <div class="modal-body">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <div class="input-group mb-3">
+                  <input type="text" name="username" value="{{old('username')}}" class="form-control" placeholder="Username">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-user"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="input-group mb-3">
+                  <input type="email" name="email" value="{{old('email')}}" class="form-control" placeholder="Email">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-envelope"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="input-group mb-3">
+                  <input type="password" name="password" value="{{old('password')}}" class="form-control" placeholder="Password">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-lock"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="input-group  mb-3">
+                  <input type="file" name="image" value="{{old('image')}}" class="form-control">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-image"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="input-group mb-3">
+                  <input type="number" name="phone" value="{{old('phone')}}" class="form-control" placeholder="Phone">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-phone"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <div class="icheck-primary">
+                      <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                      <label for="agreeTerms">
+                       I agree to the <a href="#">terms</a>
+                      </label>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <!-- /.col -->
+                </div>
+                @foreach($errors->all() as $error)
+                    <div class="text-danger">{{$error}}</div> <br>
+                @endforeach 
+              </div>
+              <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-outline-light">Add Student</button>
+              </div>
+            </form>     
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal --> 
+
 
     <!-- Main content -->
     <section class="content">
@@ -247,40 +324,39 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
+                <h3 class="card-title">Student List</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Phone</th>
                   </tr>
                   </thead>
+                  @foreach($users as $user)
+                  @if($user['type']=='student')
                   <tbody>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
+                  <tr>     
+                     <td>{{$user['username']}}</td>
+                     <td>{{$user['email']}}</td>
+                     <td>{{$user['password']}}</td>
+                     <td>{{$user['phone']}}</td>
                    </tr>
                   </tbody>
-                  {{-- <tfoot>
+                  @endif
+                  @endforeach
+                  <tfoot>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Phone</th>>
                   </tr>
-                  </tfoot> --}}
+                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->
@@ -337,7 +413,7 @@
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": ["copy", "csv", "excel", "pdf", "print"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
       "paging": true,

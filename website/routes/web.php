@@ -41,6 +41,7 @@ Route::post('/register', [RegistrationController::class,'signup']);
 Route::group(['middleware'=>['faculty']] , function(){
     Route::get('/facultyHome', [FacultyController::class,'index']);
     Route::get('/faculty/postStudent', [FacultyController::class,'poststudent']);
+    Route::post('/faculty/postStudent',[FacultyController::class,'store_student']);
 });
 
 
