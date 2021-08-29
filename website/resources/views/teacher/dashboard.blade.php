@@ -213,7 +213,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link active">
+                <a href="/faculty/profile" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Faculty Profile</p>
                 </a>

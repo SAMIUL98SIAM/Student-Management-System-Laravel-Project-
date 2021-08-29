@@ -338,16 +338,16 @@
                   </tr>
                   </thead>
                   @foreach($users as $user)
-                  @if($user['type']=='student')
-                  <tbody>
-                  <tr>     
-                     <td>{{$user['username']}}</td>
-                     <td>{{$user['email']}}</td>
-                     <td>{{$user['password']}}</td>
-                     <td>{{$user['phone']}}</td>
-                   </tr>
-                  </tbody>
-                  @endif
+                    @if($user['type']=='student')
+                    <tbody>
+                    <tr>     
+                      <td>{{$user['username']}}</td>
+                      <td>{{$user['email']}}</td>
+                      <td>{{$user['password']}}</td>
+                      <td>{{$user['phone']}}</td>
+                    </tr>
+                    </tbody>
+                    @endif
                   @endforeach
                   <tfoot>
                   <tr>
