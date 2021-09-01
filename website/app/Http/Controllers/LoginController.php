@@ -24,19 +24,22 @@ class LoginController extends Controller
                 ->where('password', $req->password)
                 ->where('type', $req->type)
                 ->first();
-            if($user['type'] =='student'){
+            if($user['type'] =='student' && $user['active']=='1'){
                 $req->session()->put('email', $req->email);
                 $req->session()->put('type', $req->type);
                 $req->session()->put('id', $user->id);
+                // $active = '1';
+                // $req->session()->put('active', $user->active);
                 return redirect('/studentHome');
             }
-            elseif($user["type"] =='faculty'){
+            elseif($user["type"] =='faculty' && $user['active']=='1'){
                 $req->session()->put('email', $req->email);
                 $req->session()->put('type', $req->type);
                 $req->session()->put('id', $user->id);
+                // $req->session()->put('active', $user->active);
                 return redirect('/facultyHome');
             }
-            elseif($user["type"] =='admin'){
+            elseif($user["type"] =='admin' && $user['active']=='1'){
                 $req->session()->put('email', $req->username);
                 $req->session()->put('type', $req->type);
                 $req->session()->put('id', $user->id);

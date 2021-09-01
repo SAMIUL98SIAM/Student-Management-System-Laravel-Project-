@@ -26,7 +26,8 @@ class UserRequest extends FormRequest
             return [
                 'email'=> 'required',
                 'password'=> 'required|min:5',
-                'type'=>'required' 
+                'type'=>'required', 
+                'active'=>'required'
 
         ];
     }
@@ -36,7 +37,8 @@ class UserRequest extends FormRequest
         [
           'email.required'=> 'Email required',
           'password.required' => 'password required....',
-          'type.required' => 'Type required'
+          'type.required' => 'Type required',
+          'active.required'=> "Please wait untill you aren't selected"
         ];
     }
 }

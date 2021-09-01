@@ -61,6 +61,7 @@ class FacultyController extends Controller
         $user->email = $req->email;
         $user->phone = $req->phone;
         $user->type = "student";
+        $user->active = 1;
         $user->password =$req->password;
         $user->save();
         return redirect('/faculty/postStudent');  
